@@ -1,0 +1,66 @@
+
+<form [formGroup]='registerForm' class="mx-auto w-75 py-5" (ngSubmit)='formSubmit(registerForm)'>
+    <h2>Register Now!</h2>
+    <div  *ngIf="error" class="alert alert-danger" m-2>
+        {{error}}
+    </div>
+    <div>
+        <label for="first_name">
+            First Name:
+        </label>
+        <input formControlName='first_name' type="text" class="form-control" >
+        <div *ngIf="registerForm.get('first_name')?.errors !=null && registerForm.get('first_name')?.touched" class=" mt-2 alert alert-danger">
+            <p *ngIf="registerForm.get('first_name')?.errors?.required">First name is required</p>
+            <p *ngIf="registerForm.get('first_name')?.errors?.minlength">First name minLength is 3</p>
+            <p *ngIf="registerForm.get('first_name')?.errors?.maxlength">First name maxLength is 8</p>
+        </div>
+    </div>
+
+    <div class="mt-2">
+        <label for="last_name">
+            last Name:
+        </label>
+        <input formControlName='last_name' type="text" class="form-control" >
+        <div *ngIf="registerForm.get('last_name')?.errors !=null && registerForm.get('last_name')?.touched" class=" mt-2 alert alert-danger">
+            <p *ngIf="registerForm.get('last_name')?.errors?.required">Last name is required</p>
+            <p *ngIf="registerForm.get('last_name')?.errors?.minlength">Last name minLength is 3</p>
+            <p *ngIf="registerForm.get('last_name')?.errors?.maxlength">Last name maxLength is 8</p>
+        </div>
+    </div>
+
+    <div>
+        <label for="age">
+            age:
+        </label>
+        <input formControlName='age' type="number" class="form-control" >
+        <div *ngIf="registerForm.get('age')?.errors !=null && registerForm.get('age')?.touched" class=" mt-2 alert alert-danger">
+            <p *ngIf="registerForm.get('age')?.errors?.required">Age is required</p>
+            <p *ngIf="registerForm.get('age')?.errors?.min">Age min is 16</p>
+            <p *ngIf="registerForm.get('age')?.errors?.max">Age max is 80</p>
+        </div>
+    </div>
+
+    <div class="mt-2">
+        <label for="email">
+            email:
+        </label>
+        <input formControlName='email' type="email" class="form-control" >
+        <div *ngIf="registerForm.get('email')?.errors !=null && registerForm.get('email')?.touched" class=" mt-2 alert alert-danger">
+            <p *ngIf="registerForm.get('email')?.errors?.required">Email is required</p>
+            <p *ngIf="registerForm.get('email')?.errors?.email">Email is inValid</p>
+        </div>
+    </div>
+
+    <div class="mt-2">
+        <label for="password">
+            password:
+        </label>
+        <input formControlName='password' type="password" class="form-control" >
+        <div *ngIf="registerForm.get('password')?.errors !=null && registerForm.get('password')?.touched" class=" mt-2 alert alert-danger">
+            <p *ngIf="registerForm.get('password')?.errors?.required">password is required</p>
+            <p *ngIf="registerForm.get('password')?.errors?.pattern">password is inValid</p>
+        </div>
+    </div>
+
+    <button [disabled]='registerForm.invalid' type="submit" class="btn btn-info mt-2">Submit</button>
+</form>

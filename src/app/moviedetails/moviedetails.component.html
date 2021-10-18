@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-md-4">
+        <img [src]="imgSrc+movieDetails.poster_path" class="w-100" alt="">
+    </div>
+    <div class="col-md-8">
+        <h3 class="py-5">{{movieDetails.title}}</h3>
+        <p class="second-color ">Summery: {{movieDetails.overview}}</p>
+        <p class="second-color">Release Date: {{movieDetails.release_date}}</p>
+        <p class="second-color">runtime: {{movieDetails.runtime}} min</p>
+        <p class="second-color">Adult: {{movieDetails.adult}}</p>
+        <p class="second-color">Rate: {{movieDetails.vote_average}}</p>
+        
+    </div>
+</div>

@@ -1,0 +1,31 @@
+
+<form [formGroup]='loginForm' class="mx-auto w-75 py-5" (ngSubmit)='formSubmit(loginForm)'>
+    <h2>Login Now!</h2>
+    <div  *ngIf="error" class="alert alert-danger" m-2>
+        {{error}}
+    </div>
+
+    <div class="mt-2">
+        <label for="email">
+            email:
+        </label>
+        <input formControlName='email' type="email" class="form-control" >
+        <div *ngIf="loginForm.get('email')?.errors !=null && loginForm.get('email')?.touched" class=" mt-2 alert alert-danger">
+            <p *ngIf="loginForm.get('email')?.errors?.required">Email is required</p>
+            <p *ngIf="loginForm.get('email')?.errors?.email">Email is inValid</p>
+        </div>
+    </div>
+
+    <div class="mt-2">
+        <label for="password">
+            password:
+        </label>
+        <input formControlName='password' type="password" class="form-control" >
+        <div *ngIf="loginForm.get('password')?.errors !=null && loginForm.get('password')?.touched" class=" mt-2 alert alert-danger">
+            <p *ngIf="loginForm.get('password')?.errors?.required">password is required</p>
+            <p *ngIf="loginForm.get('password')?.errors?.pattern">password is inValid</p>
+        </div>
+    </div>
+
+    <button [disabled]='loginForm.invalid' type="submit" class="btn btn-info mt-2">Submit</button>
+</form>

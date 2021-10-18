@@ -1,0 +1,52 @@
+<app-header [headerTrendingMovies]='movieList'></app-header>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="brdr w-25 my-5"></div>
+            <h2>Trending Movies <br> To Watch Right Now!</h2>
+            <p class="second-color">Trending Movies to Watch Right Now!</p>
+            <div class="brdr w-100 my-5"></div>
+        </div>
+        <div *ngFor="let item of movieList" class="col-md-2 position-relative ">
+            <div class="movie">
+                    <a [routerLink]="['/moviedetails',item.id]">
+                    <img class="w-100" [src]="imgSrc+item.poster_path">
+                    <h3 class="h5 mt-2">{{item.title}}</h3>
+                    <div class="vote position-absolute end-0 top-0">
+                        {{item.vote_average}}
+                    </div>
+                </a>
+                </div>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-md-4">
+            <div class="brdr w-25 my-5"></div>
+            <h2>Trending TV <br> To Watch Right Now!</h2>
+            <p class="second-color">Trending TV to Watch Right Now!</p>
+            <div class="brdr w-100 my-5"></div>
+        </div>
+        <div *ngFor="let item of tvList" class="col-md-2 position-relative ">
+            <div class="movie">
+                <img class="w-100" [src]="imgSrc+item.poster_path">
+                <h3 class="h5 mt-2">{{item.name}}</h3>
+                <div class="vote position-absolute end-0 top-0">
+                    {{item.vote_average}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col-md-4">
+            <div class="brdr w-25 my-5"></div>
+            <h2>Trending People <br>  Right Now!</h2>
+            <p class="second-color">Trending people  Right Now!</p>
+            <div class="brdr w-100 my-5"></div>
+        </div>
+        <div *ngFor="let item of peopleList" class="col-md-2">
+            <div class="movie">
+                <img class="w-100" [src]="imgSrc+item.profile_path">
+                <h3 class="h5 mt-2">{{item.name}}</h3>
+                
+            </div>
+        </div>
+    </div>
