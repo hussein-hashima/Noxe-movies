@@ -1,4 +1,8 @@
-
+.logoHome{
+    font-weight: bold;
+    font-size: 20px;
+    
+}
 ul li{
     padding: 10px 10px 10px 0;
     cursor: pointer;
