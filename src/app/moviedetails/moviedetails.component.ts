@@ -9,14 +9,20 @@ import { MoviesService } from '../movies.service';
 })
 export class MoviedetailsComponent implements OnInit {
   id:string='';
-  movieDetails:any={};
+  type:string='';
+  details:any={};
+  genresList:any[]=[];
   imgSrc:string='https://image.tmdb.org/t/p/w500';
 
   constructor(private _MoviesService:MoviesService,private _ActivatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.id=this._ActivatedRoute.snapshot.params.id;
-    this._MoviesService.getMovieDetails(this.id).subscribe((data)=>{this.movieDetails=data})
+    this.type=this._ActivatedRoute.snapshot.params.media_type;
+
+    this._MoviesService.getMovieDetails(this.type , this.id).subscribe((data)=>{this.details=data;this.genresList=data.genres;});
+    console.log(this.genresList);
+
     
   }
 

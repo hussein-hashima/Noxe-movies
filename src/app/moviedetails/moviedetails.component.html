@@ -1,14 +1,35 @@
 <div class="row">
     <div class="col-md-4">
-        <img [src]="imgSrc+movieDetails.poster_path" class="w-100" alt="">
+        <img *ngIf="type=='movie'" [src]="imgSrc+details.poster_path" class="w-100" alt="">
+        <img *ngIf="type=='tv'" [src]="imgSrc+details.poster_path" class="w-100" alt="">
+        <img *ngIf="type=='person'" [src]="imgSrc+details.profile_path" class="w-100" alt="">
     </div>
     <div class="col-md-8">
-        <h3 class="py-5">{{movieDetails.title}}</h3>
-        <p class="second-color ">Summery: {{movieDetails.overview}}</p>
-        <p class="second-color">Release Date: {{movieDetails.release_date}}</p>
-        <p class="second-color">runtime: {{movieDetails.runtime}} min</p>
-        <p class="second-color">Adult: {{movieDetails.adult}}</p>
-        <p class="second-color">Rate: {{movieDetails.vote_average}}</p>
+
+        <h3 *ngIf="type=='movie'" class="py-5">{{details.title}}</h3>
+        <h3 *ngIf="type=='tv'" class="py-5">{{details.name}}</h3>
+        <h3 *ngIf="type=='person'" class="py-5">{{details.name}}</h3>
+        <div   class="genre d-flex align-items-center">
+                <div  *ngFor="let item of genresList" class="genre-item me-2">{{item.name}}</div>
+                
+            
+        </div>
+        <p *ngIf="type!='person'">Vote: {{details.vote_average}}</p>
+        <p *ngIf="type!='person'">Vote count: {{details.vote_count}}</p>
+        <p>Popularity: {{details.popularity}}</p>
+        <p *ngIf="type=='movie'">Release Date: {{details.release_date}}</p>
+        <p *ngIf="type=='tv'">Release Date: {{details.first_air_date}}</p>
+
+
+
+        <p *ngIf="type=='movie'">runtime: {{details.runtime}} min</p>
+        <p *ngIf="type!='person'" class="second-color">{{details.overview}}</p>
+        <p *ngIf="type=='person'" >Birthday: {{details.birthday}}</p>
+        <p *ngIf="type=='person'" >Known For:{{details.known_for_department}}</p>
+        <p *ngIf="type=='person'" >Place of Birth: {{details.place_of_birth}}</p>
+        <p *ngIf="type=='person'" class="second-color" >{{details.biography}}</p>
+
         
+
     </div>
 </div>

@@ -9,21 +9,25 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class HeaderComponent implements OnInit {
 
   constructor() { }
-  imgSrc:string='https://image.tmdb.org/t/p/w500';
-  @Input() headerTrendingMovies:any[]=[];
+  imgSrc: string = 'https://image.tmdb.org/t/p/w500';
+  @Input() headerTrendingMovies: any[] = [];
   ngOnInit(): void {
   }
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: true,
-    touchDrag: false,
+    touchDrag: true,
     pullDrag: false,
     dots: false,
     navSpeed: 700,
-    navText: ['',''],
+    navText: ['', ''],
+    autoplay: true,
+    autoplaySpeed: 700,
+    autoplayTimeout:1000,
+    autoplayHoverPause: true,
     responsive: {
       0: {
-        items: 1
+        items: 3
       },
       400: {
         items: 3
@@ -32,7 +36,7 @@ export class HeaderComponent implements OnInit {
         items: 5
       },
       940: {
-        items: 6
+        items: 8
       }
     },
     nav: true

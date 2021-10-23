@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   movieList:any[]=[];
   tvList:any[]=[];
   peopleList:any[]=[];
+  params:any[]=[];
   imgSrc:string='https://image.tmdb.org/t/p/w500';
 
   constructor(public _MoviesService:MoviesService) { }
